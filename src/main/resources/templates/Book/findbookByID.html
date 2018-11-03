@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+
+
+    #first{
+
+
+
+    }
+
+   #firsttitle{
+
+        font-size: 20px;
+        font-family:Georgia, serif;
+   }
+
+        #firstcontent{
+
+            font-size: 15px;
+
+            font-family: sans-serif;
+        }
+
+        #firstDate {
+
+            font-size: 20px;
+
+            font-family: sans-serif;
+
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div >
+
+
+
+
+
+</div>
+
+<div id="first">
+    <ul>
+
+             <li  th:each="article:${articleList}">
+
+                 <span id="firsttitle"  th:text="${article.articletitle}"></span>
+                 <br>
+
+                <span id="firstcontent"  th:text="${article.articlecontent}"></span>
+
+                <br>
+                <br>
+
+               <span id="firstDate" th:text="${article.articlewrittendate}"></span>
+
+
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>

@@ -25,20 +25,14 @@ import java.util.List;
 @Configuration
 public class MongoConfig {
 
-    // 注入配置实体
-    @Autowired
-    private MongoSettingsProperties mongoSettingsProperties;
-
     @Bean
-    @ConfigurationProperties(prefix = "spring.data.mongodb")
-    MongoSettingsProperties mongoSettingsProperties() {
+    public MongoSettingsProperties mongoSettingsProperties() {
         return new MongoSettingsProperties();
     }
 
     //覆盖默认的MongoDbFacotry
     @Bean
     public MongoDbFactory mongoDbFactory(MongoSettingsProperties properties) {
-
 
         MongoClientOptions.Builder builder = new MongoClientOptions.Builder();
         builder.connectionsPerHost(properties.getMaxConnectionsPerHost());
@@ -60,7 +54,7 @@ public class MongoConfig {
         builder.localThreshold(properties.getLocalThreshold());
         MongoClientOptions mongoClientOptions = builder.build();
         String address= properties.getAddress();
-      System.out.println("Address为："+address);
+        System.out.println("Address为："+address);
         String[] hostAndPort = address.split(":");
         String host = hostAndPort[0];
         Integer port = Integer.parseInt(hostAndPort[1]);
@@ -72,11 +66,13 @@ public class MongoConfig {
 
 
 
-    MongoMappingContext context = new MongoMappingContext();
+
 
     @Bean
     public MappingMongoConverter mappingMongoConverter(MongoDbFactory factory, BeanFactory beanFactory) {
+
         DbRefResolver dbRefResolver = new DefaultDbRefResolver(factory);
+        MongoMappingContext context = new MongoMappingContext();
         MappingMongoConverter mappingConverter = new MappingMongoConverter(dbRefResolver, context);
         try {
             mappingConverter.setCustomConversions(beanFactory.getBean(CustomConversions.class));

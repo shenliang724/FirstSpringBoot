@@ -1,6 +1,7 @@
 package com.first.demo.Configure;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
@@ -12,7 +13,6 @@ import javax.validation.constraints.NotBlank;
 @Validated
 @PropertySource(value = "classpath:application.properties")
 @ConfigurationProperties(prefix = "spring.data.mongodb")
-
 public class MongoSettingsProperties {
 
 

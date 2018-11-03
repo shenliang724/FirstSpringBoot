@@ -28,6 +28,9 @@ public class book implements Serializable {
 
     private boolean bookpublic;
 
+    public book() {
+
+    }
 
     public book(int _id, String bookname, int bookpublisherid, String bookpublishdate, Integer[] bookAuthorsids, int bookbehaviorid, String bookcontributor, int booktypeid, String booklanguage, String bookfuzhu, boolean bookpublic) {
         this._id = _id;
